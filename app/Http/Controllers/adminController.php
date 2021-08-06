@@ -21,6 +21,7 @@ class adminController extends Controller
     public function amozeshgah_add(Request $request)
     {
         $amozeshgah_id = $request->amozeshgah_id;
+//        ughjikuijk
         $amozeshgah_title = $request->amozeshgah_title;
         $amozeshgah_timeAdd = $request->amozeshgah_timeAdd;
 

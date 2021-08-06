@@ -14,6 +14,9 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
       <filtered-out-file-type name="LOCAL_BRANCH" />
@@ -21,6 +24,14 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="7b3f037c-178e-4d37-857a-7d3f3f0fb127" />
+        <option name="url" value="https://github.com/agholamnezhad69/ghalam.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -141,7 +152,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ghalam32" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -217,6 +228,7 @@
       <workItem from="1625917433583" duration="277000" />
       <workItem from="1627622278718" duration="3002000" />
       <workItem from="1627642227927" duration="45000" />
+      <workItem from="1628262151711" duration="112000" />
     </task>
     <servers />
   </component>
@@ -343,7 +355,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/adminController.php</url>
-          <line>83</line>
+          <line>84</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\adminController" />
             <option name="methodName" value="get_amozeshgah_branch" />
@@ -352,7 +364,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php-line-method">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/adminController.php</url>
-          <line>397</line>
+          <line>398</line>
           <properties>
             <option name="className" value="\App\Http\Controllers\adminController" />
             <option name="methodName" value="amozeshgah_get_for_select" />
@@ -361,7 +373,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Http/Controllers/adminController.php</url>
-          <line>721</line>
+          <line>722</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
