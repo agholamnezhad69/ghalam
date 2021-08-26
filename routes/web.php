@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\adminController;
+use App\Http\Controllers\AmozeshghahController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +76,26 @@ Route::group(['prefix' => 'admin'],
         Route::post('/major_add', [adminController::class, 'major_add',])->name('admin.major_add');
         Route::get('/major_get', [adminController::class, 'major_get',])->name('admin.major');
         Route::post('/remove_major', [adminController::class, 'remove_major',])->name('admin.remove_major');
+
+
+    });
+Route::group(['prefix' => 'amozeshghah'],
+    function () {
+
+        Route::get('/index', [AmozeshghahController::class, 'index',])->name('amozeshgah.index');
+        Route::post('/branch_add', [AmozeshghahController::class, 'branch_add',])->name('amozeshgah.branch_add');
+        Route::get('/branch_get', [AmozeshghahController::class, 'branch_get',])->name('amozeshgah.branch_get');
+
+
+        Route::post('/remove_branch', [AmozeshghahController::class, 'remove_branch',])->name('amozeshgah.remove_branch');
+
+        Route::post('/user_add', [AmozeshghahController::class, 'user_add',])->name('amozeshghah.user_add');
+
+        Route::get('/user_get', [AmozeshghahController::class, 'user_get',])->name('amozeshgah.user_get');
+
+        Route::post('/get_branches_of_amozeshghah', [AmozeshghahController::class, 'get_branches_of_amozeshghah',])->name('amozeshgah.get_branches_of_amozeshghah');
+
+        Route::post('/user_access_branch', [AmozeshghahController::class, 'user_access_branch',])->name('amozeshghah.user_access_branch');
 
 
     });

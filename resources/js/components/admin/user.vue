@@ -16,11 +16,29 @@
 
 
                         <b-row class="my-1">
-                            <b-col md="5">
+                            <b-col md="3">
                                 <b-form-input
                                     placeholder="نام"
                                     class="branch-input"
+                                    v-model="name"
+                                    id="input-default">
+
+                                </b-form-input>
+                            </b-col>
+                            <b-col md="3">
+                                <b-form-input
+                                    placeholder="نام کاربری"
+                                    class="branch-input"
                                     v-model="userName"
+                                    id="input-default">
+
+                                </b-form-input>
+                            </b-col>
+                            <b-col md="3">
+                                <b-form-input
+                                    placeholder="کلمه عبور"
+                                    class="branch-input"
+                                    v-model="userPass"
                                     id="input-default">
 
                                 </b-form-input>
@@ -115,7 +133,7 @@
                                     </b-button>
                                     <b-button
                                         v-if="show_subBranch"
-                                        @click="saveUserBranchAccess()" variant="success">ذخیره
+                                        @click="saveUserBranchAccess()" variant="success">ذخیرهییی
                                     </b-button>
                                 </b-col>
                             </b-row>
@@ -131,13 +149,21 @@
                                             </b-col>
 
                                             <b-col md="7">
+                                                <!--                                                <v-select
+                                                                                                    dir="rtl"
+                                                                                                    multiple
+                                                                                                    v-model="all_amozeshgah_select_id"
+                                                                                                    :options="all_amozeshgah_select"
+                                                                                                    :reduce="title => title.id"
+                                                                                                    :selectable="option =>  option.parent > 0"
+                                                                                                    label="title"/>-->
+
                                                 <v-select
                                                     dir="rtl"
-                                                    multiple
                                                     v-model="all_amozeshgah_select_id"
                                                     :options="all_amozeshgah_select"
                                                     :reduce="title => title.id"
-                                                    :selectable="option =>  option.parent > 0"
+                                                    :selectable="option =>  option.parent ==0"
                                                     label="title"/>
 
                                             </b-col>
@@ -229,7 +255,6 @@ button.swal2-confirm.btn.btn-success {
 
     text-align: center;
 }
-
 
 
 ul[data-v-138dff1d] {
@@ -330,12 +355,14 @@ export default {
         return {
             /*************************user*/
             userId: '',
+            name: '',
             userName: '',
+            userPass: '',
             show_user_overlay: false,
             show_user: true,
             all_users: {},
             all_amozeshgah_select: [],
-            all_amozeshgah_select_id: [],
+            all_amozeshgah_select_id: '',
             branch_id: [],
             show_edit_user: false,
 
@@ -381,7 +408,7 @@ export default {
         },
         saveUser() {
 
-            if (this.userName == "") {
+            if (this.name == "" || this.userName == "" || this.userPass == "") {
                 Swal.fire("", "همه موارد را پر کنید", "error");
             }
 
@@ -389,14 +416,18 @@ export default {
             axios
                 .post("/admin/user_add", {
                     userId: this.userId,
+                    name: this.name,
                     userName: this.userName,
+                    userPass: this.userPass,
                     user_timeAdd: this.currenttimee
                 })
                 .then(response => {
 
                     if (response.data == "save") {
                         Swal.fire("", "ذخیره شد", "success");
+                        this.name = "";
                         this.userName = "";
+                        this.userPass = "";
                     } else if (response.data == "update") {
                         this.cancel_edit_user();
                         this.selectTab();
@@ -456,15 +487,15 @@ export default {
             this.show_amozeshgah_branch_overlay = false;
             this.show_subBranch = false;
             this.show_user = true;
-            this.all_amozeshgah_select_id = [];
+            this.all_amozeshgah_select_id = '';
             this.userId = '';
 
         },
         saveUserBranchAccess() {
             axios
                 .post("/admin/user_access_branch", {
-                    userIds: this.userId,
-                    branchIds: this.all_amozeshgah_select_id,
+                    userId: this.userId,
+                    amozeshghah_id: this.all_amozeshgah_select_id,
 
                 })
                 .then(response => {

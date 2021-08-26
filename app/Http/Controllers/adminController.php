@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
@@ -156,8 +157,12 @@ class adminController extends Controller
 
     public function user_add(Request $request)
     {
+        //ToDo get Amozeshghah id
+
         $userId = $request->userId;
+        $name = $request->name;
         $userName = $request->userName;
+        $userPass = $request->userPass;
         $user_timeAdd = $request->user_timeAdd;
 
 
@@ -165,8 +170,12 @@ class adminController extends Controller
 
 
             $branch = new User();
-            $branch->name = $userName;
+            $branch->name = $name;
+            $branch->username = $userName;
+            $branch->password = $userPass;
             $branch->created_at = $user_timeAdd;
+            // type_user=1 => amozeshghah admin
+            $branch->type_user = "1";
 
             if ($branch->save()) {
                 return "save";
@@ -179,7 +188,11 @@ class adminController extends Controller
             $query = User::where('id', $userId)->first();
 
             if ($query) {
-                $query->name = $userName;
+
+                $query->username = $userName;
+                $query->password = $userPass;
+                $query->updated_at = $user_timeAdd;
+
                 if ($query->update()) {
                     return "update";
                 } else {
@@ -196,6 +209,7 @@ class adminController extends Controller
     public function user_get(Request $request)
     {
         $query = DB::table('users')
+            ->where('type_user', 1)
             ->paginate(5);
         return $query;
 
@@ -249,15 +263,13 @@ class adminController extends Controller
 
     public function user_access_branch(Request $request)
     {
-        $userId = $request->userIds;
-        $branchIds = $request->branchIds;
-        $branchIds = join('/', $branchIds);
-
+        $userId = $request->userId;
+        $amozeshghah_id = $request->amozeshghah_id;
 
         $query = User::where('id', $userId)->first();
 
         if ($query) {
-            $query->branch_access_id = $branchIds;
+            $query->branch_access_id = $amozeshghah_id;
             if ($query->update()) {
                 return "yes";
             }
@@ -771,6 +783,7 @@ class adminController extends Controller
 
 
     }
+
     public function remove_teacher_lesson(Request $request)
     {
 

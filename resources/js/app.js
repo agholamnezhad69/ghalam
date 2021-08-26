@@ -17,6 +17,8 @@ let routes = [
     { path: '/lesson', component: require('./components/admin/lesson.vue').default },
     { path: '/teacher', component: require('./components/admin/teacher.vue').default },
     { path: '/major', component: require('./components/admin/major.vue').default },
+    { path: '/amozeshghah_branch', component: require('./components/amozeshghah/branch.vue').default },
+    { path: '/amozeshghah_user', component: require('./components/amozeshghah/user.vue').default },
 
 ]
 
